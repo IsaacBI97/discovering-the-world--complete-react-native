@@ -2,9 +2,8 @@ import { useState } from "react";
 
 import { Text, View, StyleSheet } from "react-native"
 
-import { TextInputComponent } from "../components/TextInputComponent";
+import { ButtonComponent, HeaderComponent, TextInputComponent } from "../components";
 import { globalStyles } from "../config/theme/globalStyles"
-import { Button } from "react-native-paper";
 
 
 export const LoginScreen = () => {
@@ -22,27 +21,30 @@ export const LoginScreen = () => {
         setPassword( password );
     };
 
+    const handleOnLogin = () => {
+        console.log('Pressed Login button...')
+    }
+
+    const handleOnSignUp = () => {
+        
+    }
+
     return (
         <View style={ globalStyles.container }>
+            <HeaderComponent />
             <View style={ styles.loginSection }>
                 <View style={ styles.card }>
-                    <Text style={ styles.header }>Login</Text>
-                    <TextInputComponent label="User Name*" text={ userName } handleOnChageText={ handleChangeUserName }/>
-                    <TextInputComponent label="Password*" text={ password} handleOnChageText={ handleChangePassword }/>
-
-                    <View style={{ marginTop: 20 }}>
-                        <View style={ styles.btnContainer }>
-                            <Button icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
-                                Sing Up
-                            </Button>
-                        </View>
-                        <View style={ styles.btnContainer }>
-                            <Button icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
-                                Sing Up
-                            </Button>
-                        </View>
+                    <View>
+                        <Text style={ styles.header }>Login</Text>
                     </View>
-
+                    <View>
+                        <TextInputComponent label="User Name*" text={ userName } handleOnChageText={ handleChangeUserName }/>
+                        <TextInputComponent label="Password*" text={ password} handleOnChageText={ handleChangePassword }/>
+                    </View>
+                    <View style={{ marginTop: 20 }}>
+                        <ButtonComponent text="Sign Up" type="outline" handleOnPress={() => console.log('Pressed')}/>
+                        <ButtonComponent text="Login" handleOnPress={() => console.log('Pressed')}/>
+                    </View>
                 </View>
             </View>    
         </View>
@@ -50,6 +52,7 @@ export const LoginScreen = () => {
 }
 
 const styles = StyleSheet.create({
+
     loginSection: {
         flex: 1,
         justifyContent: 'center',
@@ -57,7 +60,6 @@ const styles = StyleSheet.create({
     },
 
     card: {
-        height: 500,
         width: 350,
         backgroundColor: '#ffffff',
         padding: 15,
@@ -78,10 +80,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 30
     },
-
-    btnContainer: {
-        marginTop: 10
-    }
-
 });
 

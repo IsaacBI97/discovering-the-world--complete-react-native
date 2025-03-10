@@ -7,5 +7,8 @@ export const globalStyles = StyleSheet.create({
     },
     background: {
         backgroundColor: '#fffffff'
+    },
+    primaryBackground: {
+        backgroundColor: '#0065c9'
     }
 });
